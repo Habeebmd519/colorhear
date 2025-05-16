@@ -39,7 +39,7 @@ class WelcomeScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.pushNamed(context, '/colorDetect');
                 },
-                child: Text('Start Detecting', style: TextStyle(fontSize: 18)),
+                child: Text('Start Detecting', style: TextStyle(fontSize: 18 )),
               ),
               SizedBox(height: 16),
               TextButton(

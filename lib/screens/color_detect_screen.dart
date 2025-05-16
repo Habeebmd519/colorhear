@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:colorhear/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:image_picker/image_picker.dart';
@@ -27,8 +28,9 @@ class _ColorDetectScreenState extends State<ColorDetectScreen> {
         _imageFile = File(picked.path);
       });
 
-      final result =
-          await ColorDetectionService.detectColorFromImage(_imageFile!);
+      final result = await ColorDetectionService.detectColorFromImage(
+        _imageFile!,
+      );
 
       setState(() {
         detectedColor = result['color']!;
@@ -54,15 +56,21 @@ class _ColorDetectScreenState extends State<ColorDetectScreen> {
       appBar: AppBar(
         title: Text('Detect Color'),
         backgroundColor: Colors.deepPurple,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (ctx) => SettingsScreen()),
+            );
+          },
+          icon: Icon(Icons.settings),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(24.0),
-        child: Column(
+        child: Column( 
           children: [
-            Lottie.asset(
-              'assets/animations/color_detect.json',
-              height: 180,
-            ),
+            Lottie.asset('assets/animations/color_detect.json', height: 180),
             if (isLoading)
               Padding(
                 padding: const EdgeInsets.only(bottom: 16.0),
@@ -75,19 +83,21 @@ class _ColorDetectScreenState extends State<ColorDetectScreen> {
                 backgroundColor: Colors.deepPurple,
                 padding: EdgeInsets.symmetric(vertical: 12, horizontal: 20),
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
+                  borderRadius: BorderRadius.circular(12),
+                ),
               ),
               onPressed: _pickFromCamera,
             ),
             SizedBox(height: 16),
             ElevatedButton.icon(
-              icon: Icon(Icons.photo_library),
-              label: Text("Upload from Gallery"),
+              icon: Icon(Icons.photo_library, color: Colors.white),
+              label: Text("Upload from Gallery", selectionColor: Colors.white),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.deepPurple,
                 padding: EdgeInsets.symmetric(vertical: 12, horizontal: 20),
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
+                  borderRadius: BorderRadius.circular(12),
+                ),
               ),
               onPressed: _pickFromGallery,
             ),

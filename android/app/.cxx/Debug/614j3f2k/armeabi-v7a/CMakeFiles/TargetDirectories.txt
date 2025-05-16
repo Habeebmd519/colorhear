@@ -1,0 +1,2 @@
+/Users/habeeb/Desktop/project/colorhear/android/app/.cxx/Debug/614j3f2k/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Users/habeeb/Desktop/project/colorhear/android/app/.cxx/Debug/614j3f2k/armeabi-v7a/CMakeFiles/rebuild_cache.dir
