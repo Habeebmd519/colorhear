@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:lottie/lottie.dart';
+import 'package:colorhear/main.dart';
 
 class SettingsScreen extends StatefulWidget {
   @override
@@ -61,6 +62,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             onChanged: (val) {
               setState(() => isDarkMode = val);
               _updateSetting('isDarkMode', val);
+              isDarkModeNotifier.value = val;
               // Optional: apply dark mode app-wide
             },
           ),
