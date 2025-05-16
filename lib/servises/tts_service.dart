@@ -10,6 +10,8 @@ class TTSService {
     await _tts.setPitch(1.0);
     await _tts.setVolume(1.0);
   }
+ 
+
 
   static Future<void> speak(String text) async {
  final prefs = await SharedPreferences.getInstance();
@@ -29,4 +31,7 @@ class TTSService {
   static Future<void> stop() async {
     await _tts.stop();
   }
+   static Future<void> setSpeechRate(double rate) async {
+  await _tts.setSpeechRate(rate);
+}
 }

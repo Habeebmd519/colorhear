@@ -5,14 +5,15 @@ import 'package:colorhear/screens/color_detect_screen.dart';
 import 'package:colorhear/screens/settings_screen.dart';
 import 'package:colorhear/screens/how_to_use_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:colorhear/utils/theme_notifier.dart';
+
+final themeNotifier = ThemeNotifier();
 
 
 
-final ValueNotifier<bool> isDarkModeNotifier = ValueNotifier(false);
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  final prefs = await SharedPreferences.getInstance();
-  isDarkModeNotifier.value = prefs.getBool('isDarkMode') ?? false;
   await TTSService.initTTS();
   runApp(ColorHearApp());
 }
@@ -20,14 +21,21 @@ void main() async {
 class ColorHearApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder<bool>(
-      valueListenable: isDarkModeNotifier,
-      builder: (_, darkMode, __) {
+    return ValueListenableBuilder<ThemeMode>(
+      valueListenable: themeNotifier,
+      builder: (context, themeMode, _) {
         return MaterialApp(
-          theme: darkMode ? ThemeData.dark() : ThemeData(
-            primarySwatch: Colors.deepPurple,
-            fontFamily: 'Roboto',
-          ),
+        theme: ThemeData(
+  fontFamily: 'Roboto',
+  primaryColor: Colors.deepPurple,
+  scaffoldBackgroundColor: Colors.deepPurple[50],
+  appBarTheme: AppBarTheme(color: Colors.deepPurple),
+  brightness: Brightness.light,  // Optional, to make it explicitly light theme
+),
+
+          
+           darkTheme: ThemeData.dark(),
+           themeMode: themeMode,
           
             initialRoute: '/',
       onGenerateRoute: (settings) {

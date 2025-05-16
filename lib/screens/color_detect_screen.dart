@@ -6,9 +6,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:colorhear/servises/color_detection_service.dart';
 import 'package:colorhear/servises/tts_service.dart';
 
-
-
-
 class ColorDetectScreen extends StatefulWidget {
   @override
   _ColorDetectScreenState createState() => _ColorDetectScreenState();
@@ -30,8 +27,9 @@ class _ColorDetectScreenState extends State<ColorDetectScreen> {
         _imageFile = File(picked.path);
       });
 
-      final result =
-          await ColorDetectionService.detectColorFromImage(_imageFile!);
+      final result = await ColorDetectionService.detectColorFromImage(
+        _imageFile!,
+      );
 
       setState(() {
         detectedColor = result['color']!;
@@ -54,6 +52,7 @@ class _ColorDetectScreenState extends State<ColorDetectScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.deepPurple[50],
+
       appBar: AppBar(
         title: Text('Detect Color'),
         backgroundColor: Colors.deepPurple,
@@ -62,14 +61,17 @@ class _ColorDetectScreenState extends State<ColorDetectScreen> {
         padding: const EdgeInsets.all(24.0),
         child: Column(
           children: [
-            Lottie.asset(
-              'assets/animations/color_detect.json',
-              height: 180,
-            ),
+            Lottie.asset('assets/animations/color_detect.json', height: 180),
+        
             if (isLoading)
               Padding(
                 padding: const EdgeInsets.only(bottom: 16.0),
                 child: CircularProgressIndicator(),
+              ),
+                  if (_imageFile != null)
+              Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: Image.file(_imageFile!, height: 150),
               ),
             ElevatedButton.icon(
               icon: Icon(Icons.camera_alt),
@@ -78,7 +80,8 @@ class _ColorDetectScreenState extends State<ColorDetectScreen> {
                 backgroundColor: Colors.deepPurple,
                 padding: EdgeInsets.symmetric(vertical: 12, horizontal: 20),
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
+                  borderRadius: BorderRadius.circular(12),
+                ),
               ),
               onPressed: _pickFromCamera,
             ),
@@ -90,7 +93,8 @@ class _ColorDetectScreenState extends State<ColorDetectScreen> {
                 backgroundColor: Colors.deepPurple,
                 padding: EdgeInsets.symmetric(vertical: 12, horizontal: 20),
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
+                  borderRadius: BorderRadius.circular(12),
+                ),
               ),
               onPressed: _pickFromGallery,
             ),
