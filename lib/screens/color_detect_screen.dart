@@ -7,6 +7,9 @@ import 'package:image_picker/image_picker.dart';
 import 'package:colorhear/servises/color_detection_service.dart';
 import 'package:colorhear/servises/tts_service.dart';
 
+
+
+
 class ColorDetectScreen extends StatefulWidget {
   @override
   _ColorDetectScreenState createState() => _ColorDetectScreenState();

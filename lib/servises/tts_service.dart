@@ -1,4 +1,5 @@
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class TTSService {
   static final FlutterTts _tts = FlutterTts();
@@ -11,8 +12,18 @@ class TTSService {
   }
 
   static Future<void> speak(String text) async {
-    await _tts.stop(); // Stop any ongoing speech
+ final prefs = await SharedPreferences.getInstance();
+  bool enabled = prefs.getBool('ttsEnabled') ?? true;
+  if (!enabled) return;
+  try {
+    await _tts.stop();
     await _tts.speak(text);
+  } catch (e) {
+    print("TTS error: $e");
+  }
+
+    // await _tts.stop(); // Stop any ongoing speech
+    // await _tts.speak(text);
   }
 
   static Future<void> stop() async {
