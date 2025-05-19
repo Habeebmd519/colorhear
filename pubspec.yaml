@@ -71,6 +71,7 @@ flutter:
   assets:
     # - assets/images/how_to_use.png
     - assets/images/how_to_use_1.png
+    - assets/animations/color_detect.json
     # - assets/animation/color_detect.json
     # - assets/animation/settings.json
   #   - images/a_dot_burr.jpeg

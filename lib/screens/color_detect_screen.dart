@@ -6,6 +6,7 @@ import 'package:lottie/lottie.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:colorhear/servises/color_detection_service.dart';
 import 'package:colorhear/servises/tts_service.dart';
+import 'package:colorhear/utils/theme_notifier.dart';
 
 class ColorDetectScreen extends StatefulWidget {
   @override
@@ -53,6 +54,7 @@ class _ColorDetectScreenState extends State<ColorDetectScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.deepPurple[50],
+        // backgroundColor: isDarkMode ? Colors.grey[900] : Colors.deepPurple[50],
 
       appBar: AppBar(
         title: Text('Detect Color'),
@@ -71,7 +73,7 @@ class _ColorDetectScreenState extends State<ColorDetectScreen> {
         padding: const EdgeInsets.all(24.0),
         child: Column( 
           children: [
-            Lottie.asset('assets/animations/color_detect.json', height: 180),
+            Lottie.asset('assets/animations/color_detect.json', height: 180, repeat: true,),
         
             if (isLoading)
               Padding(
