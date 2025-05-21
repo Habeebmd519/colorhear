@@ -7,6 +7,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:colorhear/servises/color_detection_service.dart';
 import 'package:colorhear/servises/tts_service.dart';
 import 'package:colorhear/utils/theme_notifier.dart';
+import 'package:tflite/tflite.dart';
+
 
 class ColorDetectScreen extends StatefulWidget {
   @override
@@ -49,6 +51,19 @@ class _ColorDetectScreenState extends State<ColorDetectScreen> {
       TTSService.speak("$detectedColor. $colorDescription");
     }
   }
+  @override
+void initState() async{
+  super.initState();
+
+  await ColorDetectionService.loadModel();
+  
+@override
+void dispose() {
+  ColorDetectionService.close();
+  super.dispose();
+}
+}
+
 
   @override
   Widget build(BuildContext context) {

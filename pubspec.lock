@@ -37,10 +37,10 @@ packages:
     dependency: transitive
     description:
       name: camera_android_camerax
-      sha256: ea7e40bd63afb8f55058e48ec529ce96562be9d08393f79631a06f781161fd0d
+      sha256: "9fb44e73e0fea3647a904dc26d38db24055e5b74fc68fd2b6d3abfa1bd20f536"
       url: "https://pub.dev"
     source: hosted
-    version: "0.6.16"
+    version: "0.6.17"
   camera_avfoundation:
     dependency: transitive
     description:
@@ -608,10 +608,11 @@ packages:
   tflite:
     dependency: "direct dev"
     description:
-      name: tflite
-      sha256: "661f8942a0e8ca05fedf554cc6f9cc95f526d0e4588d1665e0eb4d29e25e69b1"
-      url: "https://pub.dev"
-    source: hosted
+      path: "."
+      ref: master
+      resolved-ref: ce8075a391e02e0cc0bc6c2db950aa961a17d745
+      url: "https://github.com/shaqian/flutter_tflite.git"
+    source: git
     version: "1.1.2"
   typed_data:
     dependency: transitive
