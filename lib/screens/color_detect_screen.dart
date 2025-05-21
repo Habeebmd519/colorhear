@@ -52,11 +52,11 @@ class _ColorDetectScreenState extends State<ColorDetectScreen> {
     }
   }
   @override
-void initState() async{
+void initState() {
   super.initState();
 
-  await ColorDetectionService.loadModel();
-  
+   ColorDetectionService.loadModel();
+
 @override
 void dispose() {
   ColorDetectionService.close();
