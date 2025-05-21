@@ -6,8 +6,9 @@ import 'package:lottie/lottie.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:colorhear/servises/color_detection_service.dart';
 import 'package:colorhear/servises/tts_service.dart';
-import 'package:colorhear/utils/theme_notifier.dart';
+// import 'package:colorhear/utils/theme_notifier.dart';
 import 'package:tflite/tflite.dart';
+import 'package:colorhear/utils/global_notifiers.dart';
 
 
 class ColorDetectScreen extends StatefulWidget {
@@ -52,10 +53,10 @@ class _ColorDetectScreenState extends State<ColorDetectScreen> {
     }
   }
   @override
-void initState() async{
+void initState() {
   super.initState();
 
-  await ColorDetectionService.loadModel();
+ ColorDetectionService.loadModel();
   
 @override
 void dispose() {
@@ -67,9 +68,13 @@ void dispose() {
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
-      backgroundColor: Colors.deepPurple[50],
-        // backgroundColor: isDarkMode ? Colors.grey[900] : Colors.deepPurple[50],
+      // backgroundColor: Colors.deepPurple[50],
+       backgroundColor: Theme.of(context).brightness == Brightness.dark
+    ? Colors.grey[900]
+    : Colors.deepPurple[50],
+
 
       appBar: AppBar(
         title: Text('Detect Color'),
@@ -101,8 +106,8 @@ void dispose() {
                 child: Image.file(_imageFile!, height: 150),
               ),
             ElevatedButton.icon(
-              icon: Icon(Icons.camera_alt),
-              label: Text("Use Camera"),
+              icon: Icon(Icons.camera_alt,color: Colors.white,),
+              label: Text("Use Camera",style: TextStyle(color: Colors.white),),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.deepPurple,
                 padding: EdgeInsets.symmetric(vertical: 12, horizontal: 20),
@@ -115,7 +120,7 @@ void dispose() {
             SizedBox(height: 16),
             ElevatedButton.icon(
               icon: Icon(Icons.photo_library, color: Colors.white),
-              label: Text("Upload from Gallery", selectionColor: Colors.white),
+              label: Text("Upload from Gallery", style: TextStyle(color: Colors.white),),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.deepPurple,
                 padding: EdgeInsets.symmetric(vertical: 12, horizontal: 20),

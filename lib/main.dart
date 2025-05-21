@@ -5,9 +5,10 @@ import 'package:colorhear/screens/color_detect_screen.dart';
 import 'package:colorhear/screens/settings_screen.dart';
 import 'package:colorhear/screens/how_to_use_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:colorhear/utils/theme_notifier.dart';
+// import 'package:colorhear/utils/theme_notifier.dart';
+import 'package:colorhear/utils/global_notifiers.dart';
 
-final themeNotifier = ThemeNotifier();
+// final themeNotifier = ThemeNotifier();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

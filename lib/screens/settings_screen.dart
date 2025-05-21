@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:lottie/lottie.dart';
 import 'package:colorhear/main.dart';
-import 'package:colorhear/utils/theme_notifier.dart';
+// import 'package:colorhear/utils/theme_notifier.dart';
+import 'package:colorhear/utils/global_notifiers.dart';
 
 // final themeNotifier = ThemeNotifier();
 
