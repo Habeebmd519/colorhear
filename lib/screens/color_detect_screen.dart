@@ -56,13 +56,8 @@ class _ColorDetectScreenState extends State<ColorDetectScreen> {
 void initState() {
   super.initState();
 
-<<<<<<< HEAD
    ColorDetectionService.loadModel();
 
-=======
- ColorDetectionService.loadModel();
-  
->>>>>>> 87172fe5c237164302d0637893d52c8fc454b80f
 @override
 void dispose() {
   ColorDetectionService.close();
