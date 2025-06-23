@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "571547345508",
+    "project_id": "color-detecor",
+    "storage_bucket": "color-detecor.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:571547345508:android:7b9e89375b23eb2eecf571",
+        "android_client_info": {
+          "package_name": "com.example.colorhear"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgmSemTVCmVNpzVs2koC7sGVl35i2PIlY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
